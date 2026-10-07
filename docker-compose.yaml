@@ -20,7 +20,7 @@ services:
   cart:
     build: ./cart
     image: sadhanala529/cart:v1
-    conatainer_name: cart
+    container_name: cart
     depends_on:
       - redis
       - catalogue
