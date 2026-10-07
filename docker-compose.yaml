@@ -24,10 +24,25 @@ services:
     depends_on:
       - redis
       - catalogue
+  shipping:
+    build: ./shipping
+    image: sadhanala529/shipping:v1
+    container_name: shipping
+    depends_on:
+      - mysql
+      - cart
+  mysql:
+    build: ./mysql
+    image: sadhanala529/mysql
+    container_name: mysql
+    command: --mysql-native-password=ON --innodb-lock_wait_timeout=120
+    environment:
+      MYSQL_ROOT_PASSWORD: "RoboShop@1"
   redis:
     build: ./redis
     image: redis
     container_name: redis
+
   frontend:
     build: ./frontend
     image: sadhanala529/frontend:v1
