@@ -31,6 +31,22 @@ services:
     depends_on:
       - mysql
       - cart
+  payment:
+    build: ./payment
+    image: sadhanala529/payment:v1
+    container_name: payment
+    environment:
+      CART_HOST: "cart"
+      CART_PORT: 8080
+      USER_HOST: user
+      USER_PORT: 8080
+      AMQP_HOST: rabbitmq
+      AMQP_USER: roboshop
+      AMQP_PASS: roboshop123
+    depends_on:
+       - cart
+       - user
+       - rabbitmq
   mysql:
     build: ./mysql
     image: sadhanala529/mysql
@@ -42,6 +58,12 @@ services:
     build: ./redis
     image: redis
     container_name: redis
+  rabbitmq:
+    image: rabbitmq:3
+    container_name: rabbitmq
+    environment:
+      RABBITMQ_DEFAULT_USER: roboshop
+      RABBITMQ_DEFAULT_PASS: roboshop123
 
   frontend:
     build: ./frontend
