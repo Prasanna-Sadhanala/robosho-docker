@@ -13,7 +13,7 @@ services:
   user:
     build: ./user
     image: sadhanala529/user:v1
-    Container_name: user
+    container_name: user
     depends_on:
       - redis
       - mongodb
