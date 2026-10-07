@@ -17,6 +17,13 @@ services:
     depends_on:
       - mongodb
       - redis
+  cart:
+    build: ./cart
+    image: sadhanala529/cart:v1
+    conatainer_name: cart
+    depends_on:
+      - redis
+      - catalogue
   redis:
     build: ./redis
     image: redis
