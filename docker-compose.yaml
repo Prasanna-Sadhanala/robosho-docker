@@ -37,6 +37,7 @@ services:
     depends_on:
       - catalogue
       - user
+      - cart
 networks:
     default : #this means all the services in this file use thid network
       name: roboshop
