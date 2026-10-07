@@ -16,6 +16,7 @@ services:
     container_name: user
     depends_on:
       - mongodb
+      - reids
   redis:
     build: ./redis
     image: redis
