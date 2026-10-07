@@ -15,7 +15,6 @@ services:
     image: sadhanala529/user:v1
     container_name: user
     depends_on:
-      - redis
       - mongodb
   frontend:
     build: ./frontend
